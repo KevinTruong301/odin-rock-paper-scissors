@@ -40,7 +40,15 @@ function playRound(playersChoice, computerChoice)
     }
 }
 
+function game()
+{
+    for(let i = 1; i <= 5; i++)
+    {
+        console.log("ROUND " + i);
+        let playersChoice = prompt("CHOOSE").toLowerCase();
+        let computerChoice = getComputerChoice();
+        console.log(playRound(playersChoice, computerChoice));
+    }
+}
 
-let playersChoice = "Rock".toLowerCase();
-let computerChoice = getComputerChoice();
-console.log(playRound(playersChoice, computerChoice));
+game();
