@@ -40,15 +40,13 @@ function playRound(playersChoice, computerChoice)
     }
 }
 
-function game()
+function game(playersChoice)
 {
-    for(let i = 1; i <= 5; i++)
-    {
-        console.log("ROUND " + i);
-        let playersChoice = prompt("CHOOSE").toLowerCase();
-        let computerChoice = getComputerChoice();
-        console.log(playRound(playersChoice, computerChoice));
-    }
+    let computerChoice = getComputerChoice();
+    console.log(playRound(playersChoice, computerChoice));
 }
 
-game();
+const rockButton = document.querySelector('#rock');
+rockButton.addEventListener('click', () => {
+    game("rock")
+});
