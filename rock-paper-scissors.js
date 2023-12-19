@@ -55,6 +55,14 @@ function game(playersChoice)
 
     const scoreDiv = document.querySelector('#score');
     scoreDiv.textContent = playerScore + " : " + computerScore;
+
+    if(playerScore == 5 || computerScore == 5)
+    {
+        playerScore = 0;
+        computerScore = 0;
+        
+        result ? alert("YOU WIN") : alert("YOU LOSE");
+    }
 }
 
 const rockButton = document.querySelector('#rock');
