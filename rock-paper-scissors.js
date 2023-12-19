@@ -16,9 +16,6 @@ function getComputerChoice(){
 
 function playRound(playersChoice, computerChoice)
 {
-    let winMsg = "You Win! " + playersChoice + " beats " + computerChoice;
-    let loseMsg = "You Lose! " + computerChoice + " beats " + playersChoice;
-
     if(playersChoice == computerChoice)
     {
         console.log("TIE");
@@ -28,22 +25,36 @@ function playRound(playersChoice, computerChoice)
 
     if(playersChoice == "rock")
     {
-        return computerChoice == "paper" ? loseMsg : winMsg;
+        return computerChoice == "paper" ? false : true;
     }
     else if(playersChoice == "paper")
     {
-        return computerChoice == "scissors" ? loseMsg : winMsg;
+        return computerChoice == "scissors" ? false : true;
     }
     else if(playersChoice == "scissors")
     {
-        return computerChoice == "rock" ? loseMsg : winMsg;
+        return computerChoice == "rock" ? false : true;
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 function game(playersChoice)
 {
+    const resultDiv = document.querySelector('#result');
+
     let computerChoice = getComputerChoice();
-    console.log(playRound(playersChoice, computerChoice));
+
+    let winMsg = "You Win! " + playersChoice + " beats " + computerChoice;
+    let loseMsg = "You Lose! " + computerChoice + " beats " + playersChoice;
+    let result = playRound(playersChoice, computerChoice);
+    resultDiv.textContent = result ? winMsg : loseMsg;
+
+    result ? playerScore++ : computerScore++;
+
+    const scoreDiv = document.querySelector('#score');
+    scoreDiv.textContent = playerScore + " : " + computerScore;
 }
 
 const rockButton = document.querySelector('#rock');
